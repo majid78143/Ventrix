@@ -1,0 +1,27 @@
+<svg class="vx-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#d946ef" />
+    </linearGradient>
+    <radialGradient id="vx-eye-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0feff" />
+      <stop offset="55%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <filter id="vx-blur" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+  </defs>
+
+  <g class="vx-mask">
+    <path class="vx-outline" d="M100 18 L60 46 L38 30 L44 66 L20 92 L52 100 L46 138 L84 118 L100 150 L116 118 L154 138 L148 100 L180 92 L156 66 L162 30 L140 46 Z"
+          stroke="url(#vx-grad)" stroke-width="5" stroke-linejoin="round" />
+
+    <circle class="vx-eye-glow-l" cx="80" cy="86" r="14" fill="url(#vx-eye-glow)" filter="url(#vx-blur)" />
+    <circle class="vx-eye-glow-r" cx="120" cy="86" r="14" fill="url(#vx-eye-glow)" filter="url(#vx-blur)" />
+    <path class="vx-eye vx-eye-l" d="M76 78 L92 88 L76 96 Z" fill="#eafffe" />
+    <path class="vx-eye vx-eye-r" d="M124 78 L108 88 L124 96 Z" fill="#eafffe" />
+  </g>
+</svg>
