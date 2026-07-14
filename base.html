@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>{% block title %}Vantrix{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand">
+      {% include "partials/logo.html" with context %}
+      <span>VANTRIX</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </header>
+
+  <nav class="sheet" id="menu-sheet">
+    <a href="/commands">Commands</a>
+    {% if session.get('user') %}
+      <a href="/dashboard">Dashboard</a>
+      <a href="/logout">Logout</a>
+    {% else %}
+      <a href="/login">Login</a>
+    {% endif %}
+    <a class="sheet-cta" href="https://discord.com/api/oauth2/authorize?client_id={{ client_id or '' }}&permissions=8&scope=bot%20applications.commands">Add to Server</a>
+  </nav>
+  <div class="sheet-backdrop" id="sheet-backdrop"></div>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">Vantrix — Discord Automation &amp; Security</footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sheet = document.getElementById('menu-sheet');
+    const backdrop = document.getElementById('sheet-backdrop');
+    function toggleMenu() { sheet.classList.toggle('open'); backdrop.classList.toggle('open'); }
+    menuBtn.addEventListener('click', toggleMenu);
+    backdrop.addEventListener('click', toggleMenu);
+  </script>
+</body>
+</html>
