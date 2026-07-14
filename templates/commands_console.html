@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Command Console — {{ guild.name if guild else 'Vantrix' }}{% endblock %}
+{% block content %}
+<section class="page console" data-guild-id="{{ guild.id if guild else '' }}">
+  <h1>Live Command Console</h1>
+  <p class="muted">Run any Vantrix command against {{ guild.name if guild else 'this server' }} directly from the website.</p>
+
+  <select id="console-cmd-select" class="search-input"></select>
+  <div id="console-params"></div>
+  <button type="button" class="btn-primary" onclick="runCommand()">Run Command</button>
+  <div id="console-result" class="console-result hidden"></div>
+</section>
+<script>window.VANTRIX_COMMANDS = {{ commands | tojson }};</script>
+<script src="{{ url_for('static', filename='commands_console.js') }}"></script>
+{% endblock %}
